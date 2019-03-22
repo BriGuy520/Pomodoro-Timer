@@ -8,7 +8,7 @@ const runningClock = document.querySelector('.running-clock');
 const setSeconds = "00";
 let seconds;
 
-function startClock() {
+function finishTimer() {
 
     let hours = Number(setHours.value);
     let minutes = Number(setMinutes.value);
@@ -37,6 +37,10 @@ function setTimer(){
     const seconds = go.getSeconds();
     
     runningClock.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+function compareStartFinish(start, end){
+    // we are going to do some logic here;
 }
 
 function countdown(){
