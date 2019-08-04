@@ -10,22 +10,25 @@ let seconds;
 
 function finishTimer() {
 
-    let hours = Number(setHours.value);
-    let minutes = Number(setMinutes.value);
-
     const start = new Date();
-    console.log(start.getTime());
 
-    let finishHour = start.getHours();
-    let finishMinute = start.getMinutes();
-    let finishSeconds = start.getSeconds();
-    
-    console.log(finishMinute);
+    let setHour = start.getHours();
+    let setMinute = start.getMinutes();
+    let setSeconds = start.getSeconds();
 
-    const endHour = finishHour + hours;
-    const endMinute = finishMinute > 30 ? finishMinute + minutes - 60 : finishMinute + minutes;
+    // console.log(setHour);
+    // console.log(setMinute);
+    // console.log(setSeconds);  
 
-    runningClock.textContent = `${endHour}:${endMinute}:${finishSeconds}`;
+    let endHour = setMinute >= 35 ? setHour + 1 : setHour;
+    let endMinute = setMinute >= 35 ? setMinute + 25 - 60 : setMinute + 25;
+    let endSeconds = setSeconds >= 35 ? setSeconds + 25 - 60 : setSeconds;
+
+    console.log(endHour);
+    console.log(endMinute);
+    console.log(endSeconds);
+
+    runningClock.textContent = `${endHour}:${endMinute}:${endSeconds}`;
     
 }
 
@@ -41,6 +44,7 @@ function setTimer(){
 
 function compareStartFinish(start, end){
     // we are going to do some logic here;
+    
 }
 
 function countdown(){
@@ -49,5 +53,7 @@ function countdown(){
     }, 1000)
 }
 
+
+finishTimer();
 
 startTimer.addEventListener('click', countdown); 
