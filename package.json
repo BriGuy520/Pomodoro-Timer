@@ -12,6 +12,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jest": "^24.5.0",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.19",
     "morgan": "^1.9.1"
   }
