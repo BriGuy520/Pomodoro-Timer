@@ -1,18 +1,23 @@
 .player-container {
-  position: absolute;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .track-outline {
-  position: absolute;
+  position: relative;
+  top: 0;
+  left: 0;
+  transform: translate(50%, 0%);
 }
 
 .moving-outline {
-  float: left;
-  position: relative;
+  position: absolute;
   z-index: 10;
+  transform: translate(-50%, 0%);
 }
 
-#startTimer {
+.btns {
   color: black;
   background: white;
   text-transform: uppercase;
