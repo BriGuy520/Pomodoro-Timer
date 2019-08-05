@@ -1,0 +1,20 @@
+.player-container {
+  position: absolute;
+}
+
+.track-outline {
+  position: absolute;
+}
+
+.moving-outline {
+  float: left;
+  position: relative;
+  z-index: 10;
+}
+
+#startTimer {
+  color: black;
+  background: white;
+  text-transform: uppercase;
+  border: 1px solid black;
+}

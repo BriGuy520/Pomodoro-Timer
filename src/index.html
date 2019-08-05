@@ -3,19 +3,26 @@
     <head>
         <meta charset="utf-8">
         <title>Pomodoro</title>
+        <link href="./style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
-         
-        <label>Timer</label>
-        <button id="startTimer" type="Submit">Start</button>
-        <svg class="track-outline" width="453" height="453" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="226.5" cy="226.5" r="66.5" stroke="#33adff" stroke-width="20"/>
-        </svg>
-        <svg class="moving-outline" width="453" height="453" viewBox="0 0 453 453" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="226.5" cy="226.5" r="66.5" stroke="red" stroke-width="20"/>
-        </svg>   
 
-        <p class="running-clock"></p>
+        <div class="player-container">
+            <svg class="track-outline" width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="226.5" cy="226.5" r="66.5" stroke="#0099ff" stroke-width="20"/>
+            </svg>
+            <svg class="moving-outline" width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="226.5" cy="226.5" r="66.5" stroke="red" stroke-width="20"/>
+            </svg>   
+        </div>
+
+        
+
+        <button id="startTimer" type="Submit">Start</button>
+        <button id="startTimer" type="Submit">Pause</button>
+        <button id="startTimer" type="Submit">Settings</button>
+        
+        
 
         <script src="./timer.js" type="text/javascript"></script>
     </body>

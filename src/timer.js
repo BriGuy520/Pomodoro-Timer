@@ -2,8 +2,10 @@ const startTimer = document.getElementById('startTimer');
 
 const setMinutes = document.querySelector('.minutes');
 const setHours = document.querySelector('.hours');
-
 const runningClock = document.querySelector('.running-clock');
+
+const outline = document.querySelector('.moving-outline circle');
+const outlineLength = outline.getTotalLength();
 
 const setCountdown = new Date().getTime();
 
@@ -14,10 +16,6 @@ let x = setInterval(function(){
     let hours = Math.floor((end % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((end % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((end % (1000 * 60)) / 1000);
-
-    console.log(hours);
-    console.log(minutes);
-    console.log(seconds);
 }, 1000);
 
 // function endTimer() {
