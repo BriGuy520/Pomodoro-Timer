@@ -5,55 +5,55 @@ const setHours = document.querySelector('.hours');
 
 const runningClock = document.querySelector('.running-clock');
 
-const setSeconds = "00";
-let seconds;
+const setCountdown = new Date().getTime();
 
-function finishTimer() {
+let x = setInterval(function(){
 
-    const start = new Date();
+    let end = new Date().getTime();
 
-    let setHour = start.getHours();
-    let setMinute = start.getMinutes();
-    let setSeconds = start.getSeconds();
+    let hours = Math.floor((end % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((end % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((end % (1000 * 60)) / 1000);
 
-    // console.log(setHour);
-    // console.log(setMinute);
-    // console.log(setSeconds);  
+    console.log(hours);
+    console.log(minutes);
+    console.log(seconds);
+}, 1000);
 
-    let endHour = setMinute >= 35 ? setHour + 1 : setHour;
-    let endMinute = setMinute >= 35 ? setMinute + 25 - 60 : setMinute + 25;
-    let endSeconds = setSeconds >= 35 ? setSeconds + 25 - 60 : setSeconds;
+// function endTimer() {
 
-    console.log(endHour);
-    console.log(endMinute);
-    console.log(endSeconds);
+//     const end = new Date();
 
-    runningClock.textContent = `${endHour}:${endMinute}:${endSeconds}`;
+//     const setHour = end.getHours();
+//     const setMinute = end.getMinutes();
+//     const endSeconds = end.getSeconds();
+
+//     const endHour = setMinute >= 35 ? setHour + 1 : setHour;
+//     const endMinute = setMinute >= 35 ? setMinute + 25 - 60 : setMinute + 25;
+
+//     return `${endHour}:${endMinute}:${endSeconds}`;
     
-}
+// }
 
-function setTimer(){
-    const go = new Date();
+// function setTimer(){
+//     setInterval(function(){
+//         const go = new Date();
 
-    const hours = go.getHours();
-    const minutes = go.getMinutes();
-    const seconds = go.getSeconds();
+//         const hours = go.getHours();
+//         const minutes = go.getMinutes();
+//         const seconds = go.getSeconds();
+        
+//         runningClock.textContent = `${Number(hours)}:${Number(minutes)}:${Number(seconds)}`;
+
+//     }, 1000);
     
-    runningClock.textContent = `${hours}:${minutes}:${seconds}`;
-}
-
-function compareStartFinish(start, end){
-    // we are going to do some logic here;
-    
-}
-
-function countdown(){
-    setInterval(function(){
-        setTimer();
-    }, 1000)
-}
+// }
 
 
-finishTimer();
 
-startTimer.addEventListener('click', countdown); 
+
+// startTimer.addEventListener('click', () => { 
+//     console.log(typeof setTimer());
+
+//     // runningClock.textContent = endTimer() - setTimer();
+// }); 
