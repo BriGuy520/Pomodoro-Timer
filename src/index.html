@@ -3,27 +3,35 @@
     <head>
         <meta charset="utf-8">
         <title>Pomodoro</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link href="./style.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
+        <div class="container">
+            <img src="./img/red-tomato.jpg" alt="tomato" class="tomato">
+            <div class="player-container">
+                <svg class="track-outline" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="226.5" cy="226.5" r="60" stroke="#0099ff" stroke-width="20"/>
+                </svg>
+                <svg class="moving-outline" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="226.5" cy="226.5" r="60" stroke="red" stroke-width="20"/>
+                </svg>   
+            </div>
 
-        <div class="player-container">
-            <svg class="track-outline" width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="226.5" cy="226.5" r="66.5" stroke="#0099ff" stroke-width="20"/>
-            </svg>
-            <svg class="moving-outline" width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="226.5" cy="226.5" r="66.5" stroke="red" stroke-width="20"/>
-            </svg>   
+            <div class="clock">
+                <h1>25:00</h1>
+            </div>
+    
+            <div class="btn-section">
+                <button id="startTimer" class="btns" type="Submit">Start</button>
+                <button id="pauseTimer" class="btns" type="Submit">Pause</button>
+                <button id="settings" class="btns" type="Submit">Settings</button>
+            </div>
+
+            <h1 class="date"></h1>
+            
         </div>
-
-        
-
-        <button id="startTimer" class="btns" type="Submit">Start</button>
-        <button id="pauseTimer" class="btns" type="Submit">Pause</button>
-        <button id="settings" class="btns" type="Submit">Settings</button>
-        
-        
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/x.y.z/moment.min.js"></script>
         <script src="./timer.js" type="text/javascript"></script>
     </body>
 </html>

@@ -1,4 +1,7 @@
-const startTimer = document.getElementById('startTimer');
+const start = document.getElementById('startTimer');
+const pause = document.getElementById('pauseTimer');
+
+const date = document.querySelector('.date');
 
 const setMinutes = document.querySelector('.minutes');
 const setHours = document.querySelector('.hours');
@@ -7,16 +10,13 @@ const runningClock = document.querySelector('.running-clock');
 const outline = document.querySelector('.moving-outline circle');
 const outlineLength = outline.getTotalLength();
 
-const setCountdown = new Date().getTime();
+outline.style.strokeDasharray = outlineLength;
+outline.style.strokeDashoffset = outlineLength;
 
-let x = setInterval(function(){
+let pomodoroTimer = 1500;
+let break = 300;
 
-    let end = new Date().getTime();
 
-    let hours = Math.floor((end % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((end % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((end % (1000 * 60)) / 1000);
-}, 1000);
 
 // function endTimer() {
 
