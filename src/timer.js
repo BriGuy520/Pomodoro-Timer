@@ -1,11 +1,7 @@
 const start = document.getElementById('startTimer');
 const pause = document.getElementById('pauseTimer');
 
-const date = document.querySelector('.date');
-
-const setMinutes = document.querySelector('.minutes');
-const setHours = document.querySelector('.hours');
-const runningClock = document.querySelector('.running-clock');
+let clock = document.querySelector('.clock h1');
 
 const outline = document.querySelector('.moving-outline circle');
 const outlineLength = outline.getTotalLength();
@@ -14,9 +10,16 @@ outline.style.strokeDasharray = outlineLength;
 outline.style.strokeDashoffset = outlineLength;
 
 let pomodoroTimer = 1500;
-let break = 300;
+let breakTimer = 300;
 
-
+start.addEventListener('click', () => {
+  setInterval(function(){
+    if(pomodoroTimer >= 0){
+      pomodoroTimer--;
+      clock.innerHTML = `${Math.floor(pomodoroTimer/60)}:${Math.floor(pomodoroTimer % 60)}`
+    }
+  }, 1000)
+})
 
 // function endTimer() {
 
