@@ -1,7 +1,10 @@
 const start = document.getElementById('startTimer');
 const pause = document.getElementById('pauseTimer');
 
+isPaused = false;
+
 let clock = document.querySelector('.clock h1');
+const alarm = document.querySelector('audio');
 
 const outline = document.querySelector('.moving-outline circle');
 const outlineLength = outline.getTotalLength();
@@ -12,8 +15,11 @@ outline.style.strokeDashoffset = outlineLength;
 let pomodoroTimer = 10;
 let breakTimer = 5;
 
+
+
 start.addEventListener('click', () => {
   setInterval(function(){
+
     let pomodoroMinutes = Math.floor(pomodoroTimer / 60);
     let pomodoroSeconds = Math.floor(pomodoroTimer % 60) < 10 ? `0${Math.floor(pomodoroTimer % 60)}` : Math.floor(pomodoroTimer % 60);
     let breakMinutes = Math.floor(breakTimer / 60);
@@ -25,19 +31,25 @@ start.addEventListener('click', () => {
 
       let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
       outline.style.strokeDashoffset = progress;
-    } 
+    } else {
+      alarm.enabled = true;
+    }
 
-    if(breakTimer > 0 && pomodoroTimer <= 0){
+    if(breakTimer >= 0 && pomodoroTimer <= 0){
       breakTimer--;
       console.log(breakTimer);
       clock.innerHTML = `${breakMinutes}:${breakSeconds}`;
-    } 
+    }
 
     if(breakTimer <= 0 && pomodoroTimer <= 0){
       pomodoroTimer = 1500;
       breakTimer = 300
     }
   }, 1000);
+});
+
+pause.addEventListener('click', () => {
+
 });
 
 // function endTimer() {

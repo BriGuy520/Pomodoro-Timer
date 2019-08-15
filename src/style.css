@@ -9,7 +9,7 @@ body {
   position: absolute;
   max-height: 100px;
   max-width: 100px;
-  transform: translate(328%, 180%);
+  transform: translate(78%, 180%);
 }
 
 .clock {
@@ -18,21 +18,25 @@ body {
 }
 
 .player-container {
+  width: 50%;
   position: relative;
   top: 0;
   left: 0;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
 }
 
 .track-outline {
   position: relative;
   top: 0;
   left: 0;
-  transform: translate(50%, 0%);
 }
 
 .moving-outline {
   position: absolute;
-  transform: translate(-50%, 0%);
 }
 
 .btn-section {
@@ -44,6 +48,7 @@ body {
 }
 
 .btns {
+  margin: 10px;
   padding: 10px;
   color: black;
   background: white;
