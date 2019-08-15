@@ -9,17 +9,31 @@ const outlineLength = outline.getTotalLength();
 outline.style.strokeDasharray = outlineLength;
 outline.style.strokeDashoffset = outlineLength;
 
-let pomodoroTimer = 1500;
-let breakTimer = 300;
+let pomodoroTimer = 10;
+let breakTimer = 5;
 
 start.addEventListener('click', () => {
   setInterval(function(){
-    if(pomodoroTimer >= 0){
+    let minutes = Math.floor(pomodoroTimer / 60);
+    let seconds = Math.floor(pomodoroTimer % 60) < 10 ? `0${Math.floor(pomodoroTimer % 60)}` : Math.floor(pomodoroTimer % 60);
+
+    if(pomodoroTimer > 0){
       pomodoroTimer--;
-      clock.innerHTML = `${Math.floor(pomodoroTimer/60)}:${Math.floor(pomodoroTimer % 60)}`
+      clock.innerHTML = `${minutes}:${seconds}`;
+    } 
+
+    if(breakTimer > 0 && pomodoroTimer === 0){
+      breakTimer--;
+      console.log(breakTimer);
+      clock.innerHTML = `${Math.floor(breakTimer / 60)}:${Math.floor(breakTimer % 60)}`;
+    } 
+
+    if(breakTimer === 0 && pomodoroTimer === 0){
+      pomodoroTimer = 1500;
+      breakTimer = 300
     }
-  }, 1000)
-})
+  }, 1000);
+});
 
 // function endTimer() {
 
