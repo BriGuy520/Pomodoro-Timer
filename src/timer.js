@@ -14,21 +14,26 @@ let breakTimer = 5;
 
 start.addEventListener('click', () => {
   setInterval(function(){
-    let minutes = Math.floor(pomodoroTimer / 60);
-    let seconds = Math.floor(pomodoroTimer % 60) < 10 ? `0${Math.floor(pomodoroTimer % 60)}` : Math.floor(pomodoroTimer % 60);
+    let pomodoroMinutes = Math.floor(pomodoroTimer / 60);
+    let pomodoroSeconds = Math.floor(pomodoroTimer % 60) < 10 ? `0${Math.floor(pomodoroTimer % 60)}` : Math.floor(pomodoroTimer % 60);
+    let breakMinutes = Math.floor(breakTimer / 60);
+    let breakSeconds = Math.floor(breakTimer % 60) < 10 ? `0${Math.floor(breakTimer % 60)}` : Math.floor(breakTimer % 60);
 
-    if(pomodoroTimer > 0){
+    if(pomodoroTimer >= 0){
       pomodoroTimer--;
-      clock.innerHTML = `${minutes}:${seconds}`;
+      clock.innerHTML = `${pomodoroMinutes}:${pomodoroSeconds}`;
+
+      let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
+      outline.style.strokeDashoffset = progress;
     } 
 
-    if(breakTimer > 0 && pomodoroTimer === 0){
+    if(breakTimer > 0 && pomodoroTimer <= 0){
       breakTimer--;
       console.log(breakTimer);
-      clock.innerHTML = `${Math.floor(breakTimer / 60)}:${Math.floor(breakTimer % 60)}`;
+      clock.innerHTML = `${breakMinutes}:${breakSeconds}`;
     } 
 
-    if(breakTimer === 0 && pomodoroTimer === 0){
+    if(breakTimer <= 0 && pomodoroTimer <= 0){
       pomodoroTimer = 1500;
       breakTimer = 300
     }
