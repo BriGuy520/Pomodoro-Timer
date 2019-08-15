@@ -24,6 +24,10 @@ body {
   left: 0;
 }
 
+.player-container svg {
+  transform: rotate(-90deg);
+}
+
 .container {
   width: 50%;
   margin: 0 auto;

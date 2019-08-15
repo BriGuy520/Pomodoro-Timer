@@ -12,8 +12,11 @@ const outlineLength = outline.getTotalLength();
 outline.style.strokeDasharray = outlineLength;
 outline.style.strokeDashoffset = outlineLength;
 
-let pomodoroTimer = 10;
-let breakTimer = 5;
+const pomodoroTotal = 30;
+const breakTotal = 15;
+
+let pomodoroTimer = 30;
+let breakTimer = 15;
 
 
 
@@ -29,16 +32,19 @@ start.addEventListener('click', () => {
       pomodoroTimer--;
       clock.innerHTML = `${pomodoroMinutes}:${pomodoroSeconds}`;
 
-      let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
-      outline.style.strokeDashoffset = progress;
+      let pomodoroProgress = outlineLength - (pomodoroTimer / pomodoroTotal) * outlineLength;
+      outline.style.strokeDashoffset = pomodoroProgress * -1;
+
     } else {
       alarm.enabled = true;
     }
 
     if(breakTimer >= 0 && pomodoroTimer <= 0){
       breakTimer--;
-      console.log(breakTimer);
       clock.innerHTML = `${breakMinutes}:${breakSeconds}`;
+
+      let breakProgress = outlineLength - (breakTimer / breakTotal) * outlineLength;
+      outline.style.strokeDashoffset = breakProgress * -1;
     }
 
     if(breakTimer <= 0 && pomodoroTimer <= 0){
@@ -49,7 +55,7 @@ start.addEventListener('click', () => {
 });
 
 pause.addEventListener('click', () => {
-
+  clearInterval(start);
 });
 
 // function endTimer() {
