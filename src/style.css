@@ -6,9 +6,12 @@ body {
 }
 
 .tomato {
-  position: absolute;
+  top: 0;
+  left: 0;
+  position: relative;
   max-height: 100px;
   max-width: 100px;
+  margin: 0 auto;
   transform: translate(78%, 180%);
   border: solid 1px red;
 }
@@ -19,8 +22,7 @@ body {
 }
 
 .player-container {
-  display: float-left;
-  width: 100%;
+  width: 25%;
   margin: 0 auto;
   position: relative;
   top: 0;
@@ -38,7 +40,7 @@ body {
 }
 
 .track-outline {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
 }
