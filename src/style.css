@@ -6,14 +6,11 @@ body {
 }
 
 .tomato {
-  top: 0;
-  left: 0;
-  position: relative;
+  display: block;
+  position: fixed;
   max-height: 100px;
   max-width: 100px;
-  margin: 0 auto;
-  transform: translate(78%, 180%);
-  border: solid 1px red;
+  transform: translate(102%, 105%);
 }
 
 .clock {
@@ -22,7 +19,7 @@ body {
 }
 
 .player-container {
-  width: 25%;
+  width: 50%;
   margin: 0 auto;
   position: relative;
   top: 0;
