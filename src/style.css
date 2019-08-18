@@ -19,6 +19,7 @@ body {
 }
 
 .player-container {
+  display: inline-block;
   width: 50%;
   margin: 0 auto;
   position: relative;
@@ -28,7 +29,6 @@ body {
 
 .player-container svg {
   transform: rotate(-90deg);
-  border: 1px solid pink;
 }
 
 .container {
@@ -43,7 +43,7 @@ body {
 }
 
 .moving-outline {
-  display: float-left;
+  /* display: float-left; */
   position: relative;
 }
 

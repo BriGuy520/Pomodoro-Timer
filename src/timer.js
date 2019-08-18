@@ -37,7 +37,7 @@ start.addEventListener('click', () => {
   
         let pomodoroProgress = outlineLength - (pomodoroTimer / pomodoroTotal) * outlineLength;
         outline.style.strokeDashoffset = pomodoroProgress * -1;
-  
+        outline.style.stroke = "#00cc00";
       } else {
         alarm.enabled = true;
       }
@@ -48,6 +48,7 @@ start.addEventListener('click', () => {
   
         let breakProgress = outlineLength - (breakTimer / breakTotal) * outlineLength;
         outline.style.strokeDashoffset = breakProgress * -1;
+        outline.style.stroke = "#d24dff";
       }
   
       if(breakTimer <= 0 && pomodoroTimer <= 0){
@@ -66,8 +67,6 @@ pause.addEventListener('click', () => {
     paused = true;
     pause.innerHTML = 'resume'.toUpperCase();
   }
-
-
 });
 
 // function endTimer() {
