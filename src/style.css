@@ -10,6 +10,7 @@ body {
   max-height: 100px;
   max-width: 100px;
   transform: translate(78%, 180%);
+  border: solid 1px red;
 }
 
 .clock {
@@ -18,7 +19,9 @@ body {
 }
 
 .player-container {
-  width: 50%;
+  display: float-left;
+  width: 100%;
+  margin: 0 auto;
   position: relative;
   top: 0;
   left: 0;
@@ -26,6 +29,7 @@ body {
 
 .player-container svg {
   transform: rotate(-90deg);
+  border: 1px solid pink;
 }
 
 .container {
@@ -40,7 +44,8 @@ body {
 }
 
 .moving-outline {
-  position: absolute;
+  display: float-left;
+  position: relative;
 }
 
 .btn-section {
