@@ -12,20 +12,16 @@ const outlineLength = outline.getTotalLength();
 outline.style.strokeDasharray = outlineLength;
 outline.style.strokeDashoffset = outlineLength;
 
-const pomodoroTotal = 1500;
+const pomodoroTotal = 10;
 const breakTotal = 300;
 
-let pomodoroTimer = 1500;
+let pomodoroTimer = 10;
 let breakTimer = 300;
-
-let paused = false;
-
-
 
 start.addEventListener('click', () => {
   setInterval(function(){
 
-    if(!paused){
+    if(!isPaused){
       let pomodoroMinutes = Math.floor(pomodoroTimer / 60);
       let pomodoroSeconds = Math.floor(pomodoroTimer % 60) < 10 ? `0${Math.floor(pomodoroTimer % 60)}` : Math.floor(pomodoroTimer % 60);
       let breakMinutes = Math.floor(breakTimer / 60);
@@ -38,8 +34,6 @@ start.addEventListener('click', () => {
         let pomodoroProgress = outlineLength - (pomodoroTimer / pomodoroTotal) * outlineLength;
         outline.style.strokeDashoffset = pomodoroProgress * -1;
         outline.style.stroke = "#00cc00";
-      } else {
-        alarm.enabled = true;
       }
   
       if(breakTimer >= 0 && pomodoroTimer <= 0){
@@ -49,6 +43,10 @@ start.addEventListener('click', () => {
         let breakProgress = outlineLength - (breakTimer / breakTotal) * outlineLength;
         outline.style.strokeDashoffset = breakProgress * -1;
         outline.style.stroke = "#d24dff";
+      }
+
+      if(breakTimer === 0 || pomodoroTimer === 0){
+        alarm.play();
       }
   
       if(breakTimer <= 0 && pomodoroTimer <= 0){
@@ -60,11 +58,11 @@ start.addEventListener('click', () => {
 });
 
 pause.addEventListener('click', () => {
-  if(paused){
-    paused = false;
+  if(isPaused){
+    isPaused = false;
     pause.innerHTML = 'pause'.toUpperCase();
   } else {
-    paused = true;
+    isPaused = true;
     pause.innerHTML = 'resume'.toUpperCase();
   }
 });
