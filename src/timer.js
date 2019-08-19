@@ -13,10 +13,10 @@ outline.style.strokeDasharray = outlineLength;
 outline.style.strokeDashoffset = outlineLength;
 
 const pomodoroTotal = 10;
-const breakTotal = 300;
+const breakTotal = 10;
 
 let pomodoroTimer = 10;
-let breakTimer = 300;
+let breakTimer = 10;
 
 start.addEventListener('click', () => {
   setInterval(function(){
@@ -28,24 +28,31 @@ start.addEventListener('click', () => {
       let breakSeconds = Math.floor(breakTimer % 60) < 10 ? `0${Math.floor(breakTimer % 60)}` : Math.floor(breakTimer % 60);
   
       if(pomodoroTimer >= 0){
-        pomodoroTimer--;
+        pomodoroTimer--; 
         clock.innerHTML = `${pomodoroMinutes}:${pomodoroSeconds}`;
-  
+      
         let pomodoroProgress = outlineLength - (pomodoroTimer / pomodoroTotal) * outlineLength;
         outline.style.strokeDashoffset = pomodoroProgress * -1;
         outline.style.stroke = "#00cc00";
+
+        
+        console.log(pomodoroTimer); 
       }
   
       if(breakTimer >= 0 && pomodoroTimer <= 0){
-        breakTimer--;
+        console.log('begin break', breakTimer)
         clock.innerHTML = `${breakMinutes}:${breakSeconds}`;
   
         let breakProgress = outlineLength - (breakTimer / breakTotal) * outlineLength;
         outline.style.strokeDashoffset = breakProgress * -1;
         outline.style.stroke = "#d24dff";
+
+        breakTimer--;
+        console.log(breakTimer);
       }
 
       if(breakTimer === 0 || pomodoroTimer === 0){
+        alarm.currentTime = 6.5;
         alarm.play();
       }
   
