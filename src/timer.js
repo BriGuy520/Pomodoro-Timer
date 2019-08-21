@@ -18,50 +18,53 @@ const breakTotal = 10;
 let pomodoroTimer = 10;
 let breakTimer = 10;
 
+const clocks = (timer, total, color) => {
+  let progress = outlineLength - (timer / total) * outlineLength;
+
+  outline.style.strokeDashoffset = progress * -1;
+  outline.style.stroke = color;
+
+  let minutes = Math.floor(timer / 60);
+  let seconds = Math.floor(timer % 60) < 10 ? `0${Math.floor(timer % 60)}` : Math.floor(timer % 60);
+
+  clock.innerHTML = `${minutes}:${seconds}`;
+}
+
+const beep = () => {
+  alarm.currentTime = 7.5;
+  alarm.play();
+}
+
 start.addEventListener('click', () => {
-  setInterval(function(){
+  setInterval(() => {
 
-    if(!isPaused){
-      let pomodoroMinutes = Math.floor(pomodoroTimer / 60);
-      let pomodoroSeconds = Math.floor(pomodoroTimer % 60) < 10 ? `0${Math.floor(pomodoroTimer % 60)}` : Math.floor(pomodoroTimer % 60);
-      let breakMinutes = Math.floor(breakTimer / 60);
-      let breakSeconds = Math.floor(breakTimer % 60) < 10 ? `0${Math.floor(breakTimer % 60)}` : Math.floor(breakTimer % 60);
-  
+    if(!isPaused){ 
       if(pomodoroTimer >= 0){
-        pomodoroTimer--; 
-        clock.innerHTML = `${pomodoroMinutes}:${pomodoroSeconds}`;
-      
-        let pomodoroProgress = outlineLength - (pomodoroTimer / pomodoroTotal) * outlineLength;
-        outline.style.strokeDashoffset = pomodoroProgress * -1;
-        outline.style.stroke = "#00cc00";
-
-        
-        console.log(pomodoroTimer); 
+        clocks(pomodoroTimer, pomodoroTotal, "#00cc00");
+        pomodoroTimer--;
       }
   
-      if(breakTimer >= 0 && pomodoroTimer <= 0){
-        console.log('begin break', breakTimer)
-        clock.innerHTML = `${breakMinutes}:${breakSeconds}`;
-  
-        let breakProgress = outlineLength - (breakTimer / breakTotal) * outlineLength;
-        outline.style.strokeDashoffset = breakProgress * -1;
-        outline.style.stroke = "#d24dff";
-
+      if(breakTimer >= 0 && pomodoroTimer < 0){
+        clocks(breakTimer, breakTotal, "#ff1ac6");
         breakTimer--;
-        console.log(breakTimer);
+        console.log("Break", breakTimer);
       }
 
-      if(breakTimer === 0 || pomodoroTimer === 0){
-        alarm.currentTime = 6.5;
-        alarm.play();
+      if(pomodoroTimer === -1 && breakTimer === breakTotal - 1){
+          beep();
+      }
+
+      if(breakTimer === -1){
+        beep();
       }
   
-      if(breakTimer <= 0 && pomodoroTimer <= 0){
-        pomodoroTimer = 1500;
-        breakTimer = 300
+      if(breakTimer < 0 && pomodoroTimer <= 0){
+        pomodoroTimer = pomodoroTotal;
+        breakTimer = breakTotal;
       }
     }
   }, 1000);
+
 });
 
 pause.addEventListener('click', () => {
@@ -73,38 +76,3 @@ pause.addEventListener('click', () => {
     pause.innerHTML = 'resume'.toUpperCase();
   }
 });
-
-// function endTimer() {
-
-//     const end = new Date();
-
-//     const setHour = end.getHours();
-//     const setMinute = end.getMinutes();
-//     const endSeconds = end.getSeconds();
-
-//     const endHour = setMinute >= 35 ? setHour + 1 : setHour;
-//     const endMinute = setMinute >= 35 ? setMinute + 25 - 60 : setMinute + 25;
-
-//     return `${endHour}:${endMinute}:${endSeconds}`;
-    
-// }
-
-// function setTimer(){
-//     setInterval(function(){
-//         const go = new Date();
-
-//         const hours = go.getHours();
-//         const minutes = go.getMinutes();
-//         const seconds = go.getSeconds();
-        
-//         runningClock.textContent = `${Number(hours)}:${Number(minutes)}:${Number(seconds)}`;
-
-//     }, 1000);
-    
-// }
-
-// startTimer.addEventListener('click', () => { 
-//     console.log(typeof setTimer());
-
-//     // runningClock.textContent = endTimer() - setTimer();
-// }); 
